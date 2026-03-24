@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <title>六合彩最近20期分析（自動更新）</title>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+  <script src="app.js" defer></script>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    table { border-collapse: collapse; }
+    th, td { border: 1px solid #ccc; padding: 6px 10px; text-align: center; }
+  </style>
+</head>
+<body>
+<h1>六合彩最近20期分析（含特別號）</h1>
+<p>資料由 GitHub Actions 自動每日更新（無需上載檔案）</p>
+<button onclick="downloadExcel()">下載 Excel 分析結果</button>
+<h2>號碼出現次數</h2>
+<table><thead><tr><th>號碼</th><th>次數</th></tr></thead><tbody id="freq"></tbody></table>
+</body>
+</html>
