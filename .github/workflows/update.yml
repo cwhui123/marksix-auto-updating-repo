@@ -1,8 +1,11 @@
+# .github/workflows/update.yml
 name: Auto Update Mark Six Data
 
 on:
+  # 每日早上 08:00（香港時間）
   schedule:
-    - cron: "30 14 * * *"  # 22:30 HKT
+    - cron: "0 0 * * *"
+
   workflow_dispatch:
 
 permissions:
@@ -21,19 +24,16 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install Python dependencies
-        run: |
-          pip install requests beautifulsoup4 pandas openpyxl
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 pandas openpyxl
 
-      - name: Fetch latest Mark Six results
-        run: |
-          python fetch_marksix.py
+      - name: Fetch Mark Six data
+        run: python fetch_marksix.py
 
-      - name: Commit and push updated data
+      - name: Commit and push data
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-
           git add data.xlsx
-          git commit -m "Auto update Mark Six data" || echo "No changes to commit"
+          git commit -m "Auto update Mark Six data" || echo "No changes"
           git push
